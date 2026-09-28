@@ -1,0 +1,35 @@
+# Spam Email Detection - No External Libraries
+spam_words = [
+    "win", "winner", "free", "prize", "money",
+    "lottery", "offer", "click", "claim", "urgent"
+]
+def check_email(email):
+    email = email.lower()
+    spam_count = 0
+    for word in spam_words:
+        if word in email:
+            spam_count += 1
+    if spam_count >= 2:
+        return "SPAM"
+    else:
+        return "NOT SPAM"
+# Test emails
+emails = [
+    "Congratulations! You won a free prize. Claim your money now!",
+    "Hello, please send me the project report tomorrow.",
+    "Urgent! Click here to claim your free offer."
+]
+for email in emails:
+    result = check_email(email)
+    print("Email:", email)
+    print("Result:", result)
+    print()
+
+OUTPUT:
+Email: Congratulations! You won a free prize. Claim your money now!
+Result: SPAM
+Email: Hello, please send me the project report tomorrow.
+Result: NOT SPAM
+Email: Urgent! Click here to claim your free offer.
+Result: SPAM
+
